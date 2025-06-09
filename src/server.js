@@ -1,11 +1,14 @@
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
+import { PORT } from './constants/envkeys.js';
+import {
+  getAllContacts,
+  getContact,
+} from './controllers/contactsController.js';
 
 export function setupServer() {
   const app = express();
-
-  const PORT = 3000;
 
   app.use(express.json());
   app.use(cors());
@@ -18,11 +21,9 @@ export function setupServer() {
     }),
   );
 
-  app.get('/', (req, res) => {
-    res.json({
-      message: 'Hello world!',
-    });
-  });
+  app.get('/contacts', getAllContacts);
+
+  app.get('/contacts/:contactId', getContact);
 
   app.use((req, res, next) => {
     res.status(404).json({
