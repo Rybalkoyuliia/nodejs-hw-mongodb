@@ -2,10 +2,9 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import { PORT } from './constants/envkeys.js';
-import {
-  getAllContacts,
-  getContact,
-} from './controllers/contactsController.js';
+import contactsRouter from './routers/contacts.js';
+import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 export function setupServer() {
   const app = express();
@@ -21,22 +20,11 @@ export function setupServer() {
     }),
   );
 
-  app.get('/contacts', getAllContacts);
+  app.use(contactsRouter);
 
-  app.get('/contacts/:contactId', getContact);
+  app.use(notFoundHandler);
 
-  app.use((req, res, next) => {
-    res.status(404).json({
-      message: 'Not found',
-    });
-  });
-
-  app.use((err, req, res, next) => {
-    res.status(500).json({
-      message: 'Something went wrong',
-      error: err.message,
-    });
-  });
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
     console.log(`Server is runing on port ${PORT}`);
