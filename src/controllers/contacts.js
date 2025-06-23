@@ -35,6 +35,7 @@ export const getOneContactController = async (req, res) => {
 
 export const addContactController = async (req, res) => {
   const payload = req.body;
+  console.log(payload);
   const result = await addContact(payload);
 
   res.status(201).json({
