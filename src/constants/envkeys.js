@@ -19,3 +19,11 @@ export const SMTP = {
 
 export const SECRET = getEnvVar('JWT_SECRET');
 export const DOMAIN = getEnvVar('APP_DOMAIN');
+
+export const CLOUDINARY = {
+  cloud_name: getEnvVar('CLOUDINARY_CLOUD_NAME'),
+  api_key: getEnvVar('CLOUDINARY_API_KEY'),
+  api_secret: getEnvVar('CLOUDINARY_API_SECRET'),
+};
+
+export const enableCloudinary = getEnvVar('ENABLE_CLOUDINARY');
