@@ -10,11 +10,11 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// export const sendEmail = async (options) => {
-//   return await transporter.sendMail(options);
-// };
-
 export const sendEmail = async (options) => {
-  console.log('Email sending is skipped during dev');
-  return true;
+  return await transporter.sendMail(options);
 };
+
+// export const sendEmail = async (options) => {
+//   console.log('Email sending is skipped during dev');
+//   return true;
+// };
