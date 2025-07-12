@@ -5,9 +5,9 @@ import { createDirIfNotExist } from './utils/createDirIfNotExist.js';
 
 const bootstrap = async () => {
   await initMongoConnection();
-  setupServer();
   await createDirIfNotExist(TEMP_DIR);
   await createDirIfNotExist(UPLOADS_DIR);
+  setupServer();
 };
 
 bootstrap();
