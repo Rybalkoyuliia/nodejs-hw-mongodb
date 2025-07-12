@@ -15,6 +15,7 @@ export const sendEmail = async (options) => {
 };
 
 // export const sendEmail = async (options) => {
+//   console.log(options);
 //   console.log('Email sending is skipped during dev');
 //   return true;
 // };

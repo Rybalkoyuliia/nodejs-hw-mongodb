@@ -162,9 +162,9 @@ export const resetPassword = async (payload) => {
 
   const hashedPassword = await encryptPassword(payload.password);
 
-  await UsersCollection.updateOne({
-    _id: user._id,
-    password: hashedPassword,
-  });
+  await UsersCollection.updateOne(
+    { _id: user._id },
+    { password: hashedPassword },
+  );
   await SessionCollection.deleteOne({ userId: user._id });
 };
