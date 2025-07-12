@@ -53,7 +53,6 @@ export const addContactController = async (req, res) => {
   }
   const payload = req.body;
   const result = await addContact({ ...payload, photo, userId: req.user._id });
-  console.log(result);
 
   res.status(201).json({
     status: 201,
