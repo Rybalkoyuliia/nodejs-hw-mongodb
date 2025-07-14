@@ -14,12 +14,12 @@ import { enableCloudinary } from '../constants/envkeys.js';
 import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
 
 export const getContactsController = async (req, res) => {
-  const { page, perPage, sortOrder, sortBy, type, isFavourite } = req.query;
+  const { page, perPage, sortOrder, sortBy, type, isFavorite } = req.query;
 
   const contacts = await getAll({
     ...parsePaginationParams({ page, perPage }),
     ...parseSortParams({ sortOrder, sortBy }),
-    filter: parseFilterParams({ type, isFavourite }),
+    filter: parseFilterParams({ type, isFavorite }),
     userId: req.user._id,
   });
   res.status(200).json({

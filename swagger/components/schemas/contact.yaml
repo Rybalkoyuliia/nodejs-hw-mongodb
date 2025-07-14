@@ -3,7 +3,7 @@ required:
   - _id
   - name
   - phoneNumber
-  - isFavourite
+  - isFavorite
   - contactType
   - userId
 properties:
@@ -23,8 +23,8 @@ properties:
     description: "Contact's email"
     type: string
     example: 'johndoe@gmail.com'
-  isFavourite:
-    description: 'Is contact in favourite list'
+  isFavorite:
+    description: 'Is contact in favorite list'
     type: boolean
     example: false
   contactType:

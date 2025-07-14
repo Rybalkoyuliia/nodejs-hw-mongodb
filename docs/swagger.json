@@ -168,6 +168,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updContact"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Update contact field by id",
@@ -190,7 +200,6 @@
                       "example": "Successfully patched a contact!"
                     },
                     "data": {
-                      "type": "object",
                       "$ref": "#/components/schemas/contact"
                     }
                   }
@@ -231,7 +240,7 @@
                   "name",
                   "phoneNumber",
                   "contactType",
-                  "isFavourite"
+                  "isFavorite"
                 ],
                 "properties": {
                   "name": {
@@ -249,8 +258,8 @@
                     "type": "string",
                     "example": "johndoe@gmail.com"
                   },
-                  "isFavourite": {
-                    "description": "Is contact in favourite list",
+                  "isFavorite": {
+                    "description": "Is contact in favorite list",
                     "type": "boolean",
                     "example": false
                   },
@@ -374,7 +383,7 @@
           },
           {
             "in": "query",
-            "name": "isFavourite",
+            "name": "isFavorite",
             "schema": {
               "type": "boolean",
               "example": false
@@ -773,14 +782,14 @@
         }
       }
     },
-    "/auth/reset-email": {
+    "/auth/reset-pwd": {
       "post": {
         "tags": [
           "Auth"
         ],
         "security": [],
         "summary": "Reset password using token",
-        "operationId": "resetEmail",
+        "operationId": "resetPassword",
         "description": "Resets the user's password using a valid reset token received via email.",
         "requestBody": {
           "required": true,
@@ -863,7 +872,7 @@
           "_id",
           "name",
           "phoneNumber",
-          "isFavourite",
+          "isFavorite",
           "contactType",
           "userId"
         ],
@@ -888,8 +897,8 @@
             "type": "string",
             "example": "johndoe@gmail.com"
           },
-          "isFavourite": {
-            "description": "Is contact in favourite list",
+          "isFavorite": {
+            "description": "Is contact in favorite list",
             "type": "boolean",
             "example": false
           },
@@ -914,6 +923,43 @@
             "example": "https://res.cloudinary.com/photo/1752325911460_894170597_lizard_se0qi7.jpg"
           }
         }
+      },
+      "updContact": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "johndoe@example.com"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "example": "+1234567890"
+          },
+          "isFavorite": {
+            "type": "boolean",
+            "example": true
+          },
+          "photo": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://example.com/photos/johndoe.jpg"
+          },
+          "contactType": {
+            "type": "string",
+            "enum": [
+              "work",
+              "personal",
+              "home"
+            ],
+            "example": "work"
+          }
+        },
+        "description": "Fields to update for a contact. Send only the fields you want to update."
       },
       "user": {
         "type": "object",

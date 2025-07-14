@@ -6,7 +6,7 @@ const contactsSchema = new Schema(
     name: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     email: { type: String },
-    isFavourite: { type: Boolean, required: true, default: false },
+    isFavorite: { type: Boolean, required: true, default: false },
     contactType: {
       type: String,
       required: true,

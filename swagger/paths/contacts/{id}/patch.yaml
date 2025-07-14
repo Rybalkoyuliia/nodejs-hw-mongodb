@@ -12,6 +12,12 @@ parameters:
     schema:
       type: string
       example: '65ca67e7ae7f10c88b598384'
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '../../../components/schemas/updContact.yaml'
 responses:
   '200':
     description: 'Update contact field by id'
@@ -31,7 +37,6 @@ responses:
               type: string
               example: Successfully patched a contact!
             data:
-              type: object
               $ref: ../../../components/schemas/contact.yaml
   '401':
     description: 'Unauthorized'

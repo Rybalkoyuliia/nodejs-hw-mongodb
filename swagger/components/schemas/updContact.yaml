@@ -1,0 +1,24 @@
+type: object
+properties:
+  name:
+    type: string
+    example: John Doe
+  email:
+    type: string
+    format: email
+    example: johndoe@example.com
+  phoneNumber:
+    type: string
+    example: '+1234567890'
+  isFavorite:
+    type: boolean
+    example: true
+  photo:
+    type: string
+    format: uri
+    example: 'https://example.com/photos/johndoe.jpg'
+  contactType:
+    type: string
+    enum: [work, personal, home]
+    example: work
+description: Fields to update for a contact. Send only the fields you want to update.

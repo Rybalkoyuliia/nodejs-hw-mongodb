@@ -35,7 +35,7 @@ parameters:
       enum: ['home', 'personal', 'work']
       example: 'home'
   - in: query
-    name: isFavourite
+    name: isFavorite
     schema:
       type: boolean
       example: false

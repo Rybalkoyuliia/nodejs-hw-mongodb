@@ -5,20 +5,20 @@ const parseContactType = (type) => {
   if (contactTypes.includes(type)) return type;
 };
 
-const parseFavourites = (isFavourite) => {
-  if (typeof isFavourite !== 'string') return;
+const parseFavorites = (isFavorite) => {
+  if (typeof isFavorite !== 'string') return;
 
-  if (isFavourite === 'true') return true;
-  if (isFavourite === 'false') return false;
+  if (isFavorite === 'true') return true;
+  if (isFavorite === 'false') return false;
 
   return;
 };
 
-export const parseFilterParams = ({ type, isFavourite }) => {
+export const parseFilterParams = ({ type, isFavorite }) => {
   const parsedContactType = parseContactType(type);
-  const parsedFavourites = parseFavourites(isFavourite);
+  const parsedFavorites = parseFavorites(isFavorite);
   return {
     contactType: parsedContactType,
-    isFavourite: parsedFavourites,
+    isFavorite: parsedFavorites,
   };
 };
