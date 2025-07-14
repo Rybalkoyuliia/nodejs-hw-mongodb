@@ -1,0 +1,53 @@
+tags:
+  - Auth
+security: []
+summary: Register user
+operationId: registerUser
+description:
+  Registers a new user account with the provided email, password, and name. On success, returns the newly created user's basic information (excluding sensitive fields) and a confirmation message.
+  If a user with the given email already exists, a 409 Conflict response is returned.
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+          - password
+          - name
+        properties:
+          email:
+            description: Must be a valid and unique email address
+            type: string
+            example: 'princessD@gmail.com'
+          password:
+            description: Must meet minimum security requirements (e.g., length, complexity)
+            type: string
+            example: '12345678'
+          name:
+            description: User's display name
+            type: string
+            example: Diana princess of Wales
+responses:
+  '201':
+    description: Successfully register
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully registered a user!
+            data:
+              $ref: '../../../components/schemas/user.yaml'
+  '409':
+    $ref: ../../../components/responses/409.yaml

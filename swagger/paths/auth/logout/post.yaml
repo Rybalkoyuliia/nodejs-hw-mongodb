@@ -1,0 +1,27 @@
+tags:
+  - Auth
+security:
+  - bearerAuth: []
+summary: Logout user
+operationId: logoutUser
+description:
+  Logs out the currently authenticated user by invalidating their session.
+  Requires a valid access token (JWT) to identify and authorize the user.
+  This operation typically removes the associated session from the database and/or clears authentication cookies.
+  Returns HTTP 204 (No Content) on success.
+  If the access token is missing or invalid, a 401 Unauthorized error is returned.
+responses:
+  '204':
+    description: Successfully logout
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+          properties:
+            status:
+              type: integer
+              example: 204
+  '401':
+    $ref: ../../../components/responses/401.yaml

@@ -1,0 +1,55 @@
+tags:
+  - Auth
+security: []
+summary: Login user
+operationId: loginUser
+description: Authenticates a user with the provided email and password.
+  On successful login, returns a JWT access token and user information.
+  The access token must be used in the Authorization header for protected routes.
+  If authentication fails (invalid credentials), a 401 response is returned.
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+          - password
+        properties:
+          email:
+            description: User's registered email address
+            type: string
+            example: 'princessD@gmail.com'
+          password:
+            description: User's account password
+            type: string
+            example: '12345678'
+responses:
+  '200':
+    description: Successfully logged in
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully logged in!
+            data:
+              type: object
+              required:
+                - accessToken
+              properties:
+                accessToken:
+                  type: string
+                  example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  '401':
+    $ref: ../../../components/responses/401.yaml

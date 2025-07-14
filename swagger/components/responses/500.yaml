@@ -1,0 +1,17 @@
+description: Internal server error
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - status
+        - message
+      properties:
+        status:
+          type: integer
+          example: 500
+          description: HTTP status code
+        message:
+          type: string
+          example: Failed to send the email, please try again later.
+          description: A human-readable error message
