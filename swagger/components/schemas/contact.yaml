@@ -40,3 +40,4 @@ properties:
     description: "url of contact's avatar"
     type: string
     example: https://res.cloudinary.com/photo/1752325911460_894170597_lizard_se0qi7.jpg
+    format: binary

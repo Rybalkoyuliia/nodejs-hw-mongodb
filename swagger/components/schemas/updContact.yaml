@@ -15,7 +15,7 @@ properties:
     example: true
   photo:
     type: string
-    format: uri
+    format: binary
     example: 'https://example.com/photos/johndoe.jpg'
   contactType:
     type: string

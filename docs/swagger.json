@@ -920,7 +920,8 @@
           "photo": {
             "description": "url of contact's avatar",
             "type": "string",
-            "example": "https://res.cloudinary.com/photo/1752325911460_894170597_lizard_se0qi7.jpg"
+            "example": "https://res.cloudinary.com/photo/1752325911460_894170597_lizard_se0qi7.jpg",
+            "format": "binary"
           }
         }
       },
@@ -946,7 +947,7 @@
           },
           "photo": {
             "type": "string",
-            "format": "uri",
+            "format": "binary",
             "example": "https://example.com/photos/johndoe.jpg"
           },
           "contactType": {
